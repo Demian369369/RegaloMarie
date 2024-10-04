@@ -187,8 +187,8 @@ document.getElementById("btnSi").addEventListener("click", function () {
 
 document.getElementById("btnNo").addEventListener("click", function () {
   Swal.fire({
-    imageUrl: "https://trneodavo.000webhostapp.com/meme/meme%20salvador.png",
+    imageUrl: "https://i2.wp.com/urbanlegendsonline.com/wp-content/uploads/2019/02/the_shadowy_hat.jpg?fit=1024%2C802&ssl=1",
     imageHeight: 350,
-    imageAlt: "A tall image",
+    imageAlt: "No era opcional",
   });
 });
