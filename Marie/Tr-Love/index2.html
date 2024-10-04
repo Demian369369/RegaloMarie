@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar Imagen y Audio</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #000; 
+            color: white;
+            text-align: center;
+            overflow: hidden; 
+        }
+        .container {
+            max-width: 400px; 
+            width: 100%;
+        }
+        img {
+            display: block; 
+            margin: auto; 
+            width: 100%;
+            height: auto;
+            border-radius: 10px; 
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); 
+            object-fit: cover; 
+        }
+        button {
+            background-color: purple; 
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #6a0dad; 
+        }
+        #audio {
+            display: none;
+        }
+        #imagenRedirigible {
+            display: none; 
+            cursor: pointer;
+            width: 50px; 
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <iframe id="videoFondo" 
+            width="100%" 
+            height="100%" 
+            src="https://www.youtube.com/embed/RDyMdlQpMHo?autoplay=1&controls=0&mute=1&loop=1&playlist=RDyMdlQpMHo" 
+            frameborder="0" 
+            style="position: fixed; top: 0; left: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover;" 
+            allow="autoplay; encrypted-media">
+    </iframe>
+    
+    <div class="container">
+        <img id="imagen" src="imagen1.jpg" alt="Imagen" />
+    </div>
+    
+    <div>
+        <button id="anterior">Anterior</button>
+        <button id="siguiente">Siguiente</button>
+    </div>
+
+    <iframe id="audio" src="https://www.youtube.com/embed/ofwGXmI6W_Y?autoplay=1&controls=0&mute=0&loop=1&playlist=ofwGXmI6W_Y" frameborder="0" allow="autoplay"></iframe>
+
+    <img id="imagenRedirigible" src="ImagenO.jpg" alt="SI" />
+
+    <script>
+        const imagen = document.getElementById('imagen');
+        const anterior = document.getElementById('anterior');
+        const siguiente = document.getElementById('siguiente');
+        const imagenRedirigible = document.getElementById('imagenRedirigible');
+        const imagenes = [
+            'imagen1.jpg', 
+            'imagen2.jpg', 
+            'imagen3.jpg', 
+            'imagen4.jpg', 
+            'imagen5.jpg',
+            'imagen6.jpg',
+            'imagen7.jpg'
+        ]; 
+        let indice = 0;
+
+        function cambiarImagen() {
+            imagen.src = imagenes[indice];
+
+            if (indice === imagenes.length - 1) {
+                imagenRedirigible.style.display = 'block';
+            } else {
+                imagenRedirigible.style.display = 'none';
+            }
+        }
+
+        anterior.addEventListener('click', function() {
+            indice = (indice - 1 + imagenes.length) % imagenes.length; 
+            cambiarImagen();
+        });
+
+        siguiente.addEventListener('click', function() {
+            indice = (indice + 1) % imagenes.length; 
+            cambiarImagen();
+        });
+
+        imagenRedirigible.addEventListener('click', function() {
+            window.location.href = 'index.html'; 
+        });
+    </script>
+</body>
+</html>
